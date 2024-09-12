@@ -1,0 +1,20 @@
+;removing duplicate
+;for this, we can utilize two functions
+
+( = (contains () $target) false)
+( = (contains (:: $x $xs) $target) (
+    if (== $x $target) true
+    (contains $xs $target)
+))
+
+;if the list in the current recursive call contains the specified
+;element, we will not include the element in the list build up process
+;else we shalll continue
+
+(= (remove_duplicates ()) ())
+(= (remove_duplicates (:: $x $xs)) (
+    if (== (contains $xs $x) true) (remove_duplicates $xs)
+    (:: $x (remove_duplicates $xs))
+))
+
+! (remove_duplicates (:: 1 (:: 2 (:: 2 (:: 3 (:: 1 (:: 4 ())))))))
