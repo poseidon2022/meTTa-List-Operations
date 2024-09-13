@@ -3,6 +3,10 @@
     (:: $value $left $right)
 )
 
+;apart from this ds, let us also simulate the usage
+;by constructing and implementing the inorder (sorted) traversal
+;function for a binary search tree
+
 ;create a new node
 (= (insert () $new_value)
     (node $new_value () ())
